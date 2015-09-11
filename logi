@@ -1,0 +1,376 @@
+[4mRunning "clean:server" (clean) task[24m
+[32m>> [39m1 path cleaned.
+
+[4mRunning "wiredep:app" (wiredep) task[24m
+
+[4mRunning "wiredep:test" (wiredep) task[24m
+
+[4mRunning "concurrent:test" (concurrent) task[24m
+    
+[4mRunning "copy:styles" (copy) task[24m
+Copied 1 file
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-05-25 13:41:30 UTC)
+loading tasks   6ms  ██████ 12%
+copy:styles    42ms  █████████████████████████████████████████ 86%
+Total 49ms
+
+[4mRunning "autoprefixer:server" (autoprefixer) task[24m
+File .tmp/styles/main.css created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/styles/main.css created.
+
+[4mRunning "connect:test" (connect) task[24m
+Started connect web server on http://localhost:9001
+
+[4mRunning "karma:unit" (karma) task[24m
+[32mINFO [karma]: [39mKarma v0.12.31 server started at http://localhost:8080/
+[32mINFO [launcher]: [39mStarting browser Chrome
+[32mINFO [Chrome 43.0.2357 (Windows 7)]: [39mConnected on socket ls_JWBoM5RJdwCOBTpOT with id 83165816
+Chrome 43.0.2357 (Windows 7): Executed 0 of 38[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) E2E: Routes should load the index page FAILED[39m
+	ReferenceError: browser is not defined
+	    at Context.<anonymous> (base/test/spec/end2end/routes.js?b56c397fe4f914b987bb54bb1a8b5224be29f90b:4:3)
+Chrome 43.0.2357 (Windows 7): Executed 1 of 38[31m (1 FAILED)[39m (0 secs / 0.001 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) E2E: Views "before each" hook FAILED[39m
+	ReferenceError: browser is not defined
+	    at Context.<anonymous> (base/test/spec/end2end/templates.js?dfd005c26fd563d2302155262629bb3b4c123edd:4:3)
+Chrome 43.0.2357 (Windows 7): Executed 2 of 38[31m (2 FAILED)[39m (0 secs / 0.001 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Controller: MainCtrl should attach a list of awesomeThings to the scope FAILED[39m
+	TypeError: Cannot read property 'length' of undefined
+	    at Context.<anonymous> (base/test/spec/unit/controllers/main.js?a93eecbf104f13f10351721c02d7f89a4e55ef53:20:31)
+Chrome 43.0.2357 (Windows 7): Executed 3 of 38[31m (3 FAILED)[39m (0 secs / 0.002 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: trustAsResourceUrl filter test should return trusted url FAILED[39m
+	Error: [$injector:unpr] Unknown provider: https://www.youtube.com/watch?v=Nv4Buep3kRcFilterProvider <- https://www.youtube.com/watch?v=Nv4Buep3kRcFilter
+	http://errors.angularjs.org/1.3.15/$injector/unpr?p0=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DNv4Buep3kRcFilterProvider%20%3C-%20https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DNv4Buep3kRcFilter
+	    at Context.<anonymous> (base/test/spec/unit/filters/trustAsResourceUrl.js?1910873168cfc3785f1c720616c3909cbbb5f350:10:10)
+Chrome 43.0.2357 (Windows 7): Executed 4 of 38[31m (4 FAILED)[39m (0 secs / 0.003 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 5 of 38[31m (4 FAILED)[39m (0 secs / 0.007 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 6 of 38[31m (4 FAILED)[39m (0 secs / 0.009 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 7 of 38[31m (4 FAILED)[39m (0 secs / 0.01 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 8 of 38[31m (4 FAILED)[39m (0 secs / 0.012 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing checkAnchor factory should get url and return video ID or "-1" when url was incorrect FAILED[39m
+	the object {
+	  "message": "checkAnchor.takeIdFromUrl is not a function"
+	  "name": "TypeError"
+	  "stack": "TypeError: checkAnchor.takeIdFromUrl is not a function
+	    at Context.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/check-url.js:49:24)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4203:17)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/check-url.js:47:5)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/check-url.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "checkAnchor.takeIdFromUrl is not a function"
+	  "name": "TypeError"
+	  "stack": "TypeError: checkAnchor.takeIdFromUrl is not a function
+	    at Context.<anonymous> (base/test/spec/unit/services/check-url.js?a9d9e4c650e96e3a5052a2ab5777498ea6a48980:49:24)
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/check-url.js?a9d9e4c650e96e3a5052a2ab5777498ea6a48980:47:5)
+	    at base/test/spec/unit/services/check-url.js?a9d9e4c650e96e3a5052a2ab5777498ea6a48980:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 9 of 38[31m (5 FAILED)[39m (0 secs / 0.014 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 10 of 38[31m (5 FAILED)[39m (0 secs / 0.016 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 11 of 38[31m (5 FAILED)[39m (0 secs / 0.018 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing objectNeutralizer factory should return neutralized object from vimeo  FAILED[39m
+	the object {
+	  "message": "objectNeutralizer.transformVimeoObject is not a function"
+	  "name": "TypeError"
+	  "stack": "TypeError: objectNeutralizer.transformVimeoObject is not a function
+	    at Context.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/object-neutralizer.js:42:30)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4203:17)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/object-neutralizer.js:40:5)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/object-neutralizer.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "objectNeutralizer.transformVimeoObject is not a function"
+	  "name": "TypeError"
+	  "stack": "TypeError: objectNeutralizer.transformVimeoObject is not a function
+	    at Context.<anonymous> (base/test/spec/unit/services/object-neutralizer.js?97aaae26c09de0aea66efe66821edb4d6fcb773e:42:30)
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/object-neutralizer.js?97aaae26c09de0aea66efe66821edb4d6fcb773e:40:5)
+	    at base/test/spec/unit/services/object-neutralizer.js?97aaae26c09de0aea66efe66821edb4d6fcb773e:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 12 of 38[31m (6 FAILED)[39m (0 secs / 0.02 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing objectNeutralizer factory should return neutralized object from youtube  FAILED[39m
+	the object {
+	  "message": "objectNeutralizer.transformVimeoObject is not a function"
+	  "name": "TypeError"
+	  "stack": "TypeError: objectNeutralizer.transformVimeoObject is not a function
+	    at Context.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/object-neutralizer.js:55:30)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4203:17)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/object-neutralizer.js:53:5)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/object-neutralizer.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "objectNeutralizer.transformVimeoObject is not a function"
+	  "name": "TypeError"
+	  "stack": "TypeError: objectNeutralizer.transformVimeoObject is not a function
+	    at Context.<anonymous> (base/test/spec/unit/services/object-neutralizer.js?97aaae26c09de0aea66efe66821edb4d6fcb773e:55:30)
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/object-neutralizer.js?97aaae26c09de0aea66efe66821edb4d6fcb773e:53:5)
+	    at base/test/spec/unit/services/object-neutralizer.js?97aaae26c09de0aea66efe66821edb4d6fcb773e:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 13 of 38[31m (7 FAILED)[39m (0 secs / 0.026 secs)
+[1A[2KLOG: [36mObject{0: Object{id: 11111111, title: 'title', stats_number_of_plays: 1234, stats_number_of_likes: 123, thumbnail_medium: 'picture'}}[39m
+Chrome 43.0.2357 (Windows 7): Executed 13 of 38[31m (7 FAILED)[39m (0 secs / 0.026 secs)
+[1A[2KLOG: [36mObject{entry: Object{id: 22222222222, name: 'title', viewCount: 1234, likesCount: 123, thumbnail: 'picture'}}[39m
+Chrome 43.0.2357 (Windows 7): Executed 13 of 38[31m (7 FAILED)[39m (0 secs / 0.026 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing objectNeutralizer factory should return an array of  FAILED[39m
+	the object {
+	  "message": "Cannot read property 'id' of undefined"
+	  "name": "TypeError"
+	  "stack": "TypeError: Cannot read property 'id' of undefined
+	    at transformVimeoObject (C:/Users/Tomasz/Desktop/projects/work/yt/app/scripts/services/object-neutralizer.js:7:35)
+	    at Object.getData (C:/Users/Tomasz/Desktop/projects/work/yt/app/scripts/services/object-neutralizer.js:38:32)
+	    at Context.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/object-neutralizer.js:69:53)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4203:17)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/object-neutralizer.js:67:5)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/object-neutralizer.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "Cannot read property 'id' of undefined"
+	  "name": "TypeError"
+	  "stack": "TypeError: Cannot read property 'id' of undefined
+	    at transformVimeoObject (base/app/scripts/services/object-neutralizer.js?ed0f3fc2af871216b79eba727c60f81654c99af8:7:35)
+	    at Object.getData (base/app/scripts/services/object-neutralizer.js?ed0f3fc2af871216b79eba727c60f81654c99af8:38:32)
+	    at Context.<anonymous> (base/test/spec/unit/services/object-neutralizer.js?97aaae26c09de0aea66efe66821edb4d6fcb773e:69:53)
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/object-neutralizer.js?97aaae26c09de0aea66efe66821edb4d6fcb773e:67:5)
+	    at base/test/spec/unit/services/object-neutralizer.js?97aaae26c09de0aea66efe66821edb4d6fcb773e:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 14 of 38[31m (8 FAILED)[39m (0 secs / 0.029 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 15 of 38[31m (8 FAILED)[39m (0 secs / 0.032 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 16 of 38[31m (8 FAILED)[39m (0 secs / 0.035 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing pagination factory should return array of objects for one page (10 elements) FAILED[39m
+	the object {
+	  "message": "expected 6 to have a property 'length'"
+	  "name": "AssertionError"
+	  "stack": "AssertionError: expected 6 to have a property 'length'
+	    at Assertion.assertLength (C:/Users/Tomasz/Desktop/projects/work/yt/node_modules/chai/chai.js:1931:37)
+	    at Assertion.assert (C:/Users/Tomasz/Desktop/projects/work/yt/node_modules/chai/chai.js:4052:49)
+	    at Context.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/pagination.js:27:41)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4203:17)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/pagination.js:18:5)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/pagination.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "expected 6 to have a property 'length'"
+	  "name": "AssertionError"
+	  "stack": "AssertionError: expected 6 to have a property 'length'
+	    at Context.<anonymous> (base/test/spec/unit/services/pagination.js?848e6a3a894bed75879dc70046ea09f31c6e87ac:27:41)
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/pagination.js?848e6a3a894bed75879dc70046ea09f31c6e87ac:18:5)
+	    at base/test/spec/unit/services/pagination.js?848e6a3a894bed75879dc70046ea09f31c6e87ac:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 17 of 38[31m (9 FAILED)[39m (0 secs / 0.041 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 18 of 38[31m (9 FAILED)[39m (0 secs / 0.046 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 19 of 38[31m (9 FAILED)[39m (0 secs / 0.049 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing storage factory should return number grater than 0 when first argument is higher FAILED[39m
+	the object {
+	  "message": "storage.numbersComparator is not a function"
+	  "name": "TypeError"
+	  "stack": "TypeError: storage.numbersComparator is not a function
+	    at Context.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:24:20)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4203:17)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:22:5)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "storage.numbersComparator is not a function"
+	  "name": "TypeError"
+	  "stack": "TypeError: storage.numbersComparator is not a function
+	    at Context.<anonymous> (base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:24:20)
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:22:5)
+	    at base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 20 of 38[31m (10 FAILED)[39m (0 secs / 0.052 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing storage factory should return array of local storage values FAILED[39m
+	the object {
+	  "message": "localStorageService is not defined"
+	  "name": "ReferenceError"
+	  "stack": "ReferenceError: localStorageService is not defined
+	    at Context.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:31:7)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4203:17)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:30:5)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "localStorageService is not defined"
+	  "name": "ReferenceError"
+	  "stack": "ReferenceError: localStorageService is not defined
+	    at Context.<anonymous> (base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:31:7)
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:30:5)
+	    at base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 21 of 38[31m (11 FAILED)[39m (0 secs / 0.055 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing storage factory should set a value to the key in local storage FAILED[39m
+	the object {
+	  "message": "val is not defined"
+	  "name": "ReferenceError"
+	  "stack": "ReferenceError: val is not defined
+	    at Context.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:46:36)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4203:17)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:42:5)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "val is not defined"
+	  "name": "ReferenceError"
+	  "stack": "ReferenceError: val is not defined
+	    at Context.<anonymous> (base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:46:36)
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:42:5)
+	    at base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 22 of 38[31m (12 FAILED)[39m (0 secs / 0.059 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing storage factory should return index of the last local storage  FAILED[39m
+	the object {
+	  "message": "localStorageService is not defined"
+	  "name": "ReferenceError"
+	  "stack": "ReferenceError: localStorageService is not defined
+	    at Context.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:51:7)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4203:17)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:50:3)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/storage.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "localStorageService is not defined"
+	  "name": "ReferenceError"
+	  "stack": "ReferenceError: localStorageService is not defined
+	    at Context.<anonymous> (base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:51:7)
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:50:3)
+	    at base/test/spec/unit/services/storage.js?07eeefe62db96bbd90a897013502217f30b61301:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 23 of 38[31m (13 FAILED)[39m (0 secs / 0.063 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 24 of 38[31m (13 FAILED)[39m (0 secs / 0.065 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing videoData factory should contain getArrayForView function FAILED[39m
+	the object {
+	  "message": "[ng:areq] Argument 'fn' is not a function, got string
+	http://errors.angularjs.org/1.3.15/ng/areq?p0=fn&p1=not%20a%20function%2C%20got%20string"
+	  "name": "Error"
+	  "stack": "Error: [ng:areq] Argument 'fn' is not a function, got string
+	http://errors.angularjs.org/1.3.15/ng/areq?p0=fn&p1=not%20a%20function%2C%20got%20string
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:63:12
+	    at assertArg (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:1587:11)
+	    at assertArgFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:1597:3)
+	    at Function.annotate (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:3489:5)
+	    at Function.angular.injector.$$annotate (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2219:36)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4181:36)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/video-data.js:14:5)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/video-data.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "[ng:areq] Argument 'fn' is not a function, got string
+	http://errors.angularjs.org/1.3.15/ng/areq?p0=fn&p1=not%20a%20function%2C%20got%20string"
+	  "name": "Error"
+	  "stack": "Error: [ng:areq] Argument 'fn' is not a function, got string
+	http://errors.angularjs.org/1.3.15/ng/areq?p0=fn&p1=not%20a%20function%2C%20got%20string
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/video-data.js?42c5c8f6984e86487a8bfdf2e4ed301bb24635f6:14:5)
+	    at base/test/spec/unit/services/video-data.js?42c5c8f6984e86487a8bfdf2e4ed301bb24635f6:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 25 of 38[31m (14 FAILED)[39m (0 secs / 0.067 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Testing videoData factory should test $http "before each" hook: workFn FAILED[39m
+	the object {
+	  "message": "[$injector:unpr] Unknown provider: myServiceProvider <- myService
+	http://errors.angularjs.org/1.3.15/$injector/unpr?p0=myServiceProvider%20%3C-%20myService"
+	  "name": "Error"
+	  "stack": "Error: [$injector:unpr] Unknown provider: myServiceProvider <- myService
+	http://errors.angularjs.org/1.3.15/$injector/unpr?p0=myServiceProvider%20%3C-%20myService
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:63:12
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4015:19
+	    at Object.getService [as get] (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4162:39)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4020:45
+	    at getService (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4162:39)
+	    at Object.invoke (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4194:13)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2436:20)
+	Error: Declaration Location
+	    at window.inject.angular.mock.inject (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2407:25)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/video-data.js:33:16)
+	    at Suite.<anonymous> (C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/video-data.js:29:1)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/test/spec/unit/services/video-data.js:1:1"
+	} was thrown, throw an Error :)
+	Error: the object {
+	  "message": "[$injector:unpr] Unknown provider: myServiceProvider <- myService
+	http://errors.angularjs.org/1.3.15/$injector/unpr?p0=myServiceProvider%20%3C-%20myService"
+	  "name": "Error"
+	  "stack": "Error: [$injector:unpr] Unknown provider: myServiceProvider <- myService
+	http://errors.angularjs.org/1.3.15/$injector/unpr?p0=myServiceProvider%20%3C-%20myService
+	Error: Declaration Location
+	    at Suite.<anonymous> (base/test/spec/unit/services/video-data.js?42c5c8f6984e86487a8bfdf2e4ed301bb24635f6:33:16)
+	    at Suite.<anonymous> (base/test/spec/unit/services/video-data.js?42c5c8f6984e86487a8bfdf2e4ed301bb24635f6:29:1)
+	    at base/test/spec/unit/services/video-data.js?42c5c8f6984e86487a8bfdf2e4ed301bb24635f6:1:1"
+	} was thrown, throw an Error :)
+Chrome 43.0.2357 (Windows 7): Executed 26 of 38[31m (15 FAILED)[39m (0 secs / 0.07 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Templates "before each" hook: workFn FAILED[39m
+	[$injector:modulerr] Failed to instantiate module templates due to:
+	Error: [$injector:nomod] Module 'templates' is not available! You either misspelled the module name or forgot to load it. If registering a module ensure that you specify the dependencies as the second argument.
+	http://errors.angularjs.org/1.3.15/$injector/nomod?p0=templates
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:63:12
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:1774:17
+	    at ensure (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:1698:38)
+	    at module (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:1772:14)
+	    at C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4115:22
+	    at forEach (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:323:20)
+	    at loadModules (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4099:5)
+	    at Object.createInjector [as injector] (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular/angular.js:4025:11)
+	    at Context.workFn (C:/Users/Tomasz/Desktop/projects/work/yt/bower_components/angular-mocks/angular-mocks.js:2425:52)
+	http://errors.angularjs.org/1.3.15/$injector/modulerr?p0=templates&p1=Error%3A%20%5B%24injector%3Anomod%5D%20Module%20'templates'%20is%20not%20available!%20You%20either%20misspelled%20the%20module%20name%20or%20forgot%20to%20load%20it.%20If%20registering%20a%20module%20ensure%20that%20you%20specify%20the%20dependencies%20as%20the%20second%20argument.%0Ahttp%3A%2F%2Ferrors.angularjs.org%2F1.3.15%2F%24injector%2Fnomod%3Fp0%3Dtemplates%0A%20%20%20%20at%20http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fbower_components%2Fangular%2Fangular.js%3F1061b10c86c20aae22472741139f553995ce2951%3A63%3A12%0A%20%20%20%20at%20http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fbower_components%2Fangular%2Fangular.js%3F1061b10c86c20aae22472741139f553995ce2951%3A1774%3A17%0A%20%20%20%20at%20ensure%20(http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fbower_components%2Fangular%2Fangular.js%3F1061b10c86c20aae22472741139f553995ce2951%3A1698%3A38)%0A%20%20%20%20at%20module%20(http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fbower_components%2Fangular%2Fangular.js%3F1061b10c86c20aae22472741139f553995ce2951%3A1772%3A14)%0A%20%20%20%20at%20http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fbower_components%2Fangular%2Fangular.js%3F1061b10c86c20aae22472741139f553995ce2951%3A4115%3A22%0A%20%20%20%20at%20forEach%20(http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fbower_components%2Fangular%2Fangular.js%3F1061b10c86c20aae22472741139f553995ce2951%3A323%3A20)%0A%20%20%20%20at%20loadModules%20(http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fbower_components%2Fangular%2Fangular.js%3F1061b10c86c20aae22472741139f553995ce2951%3A4099%3A5)%0A%20%20%20%20at%20Object.createInjector%20%5Bas%20injector%5D%20(http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fbower_components%2Fangular%2Fangular.js%3F1061b10c86c20aae22472741139f553995ce2951%3A4025%3A11)%0A%20%20%20%20at%20Context.workFn%20(http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fbower_components%2Fangular-mocks%2Fangular-mocks.js%3Fbd422b0634824fd1aec4b70bdad3b63fc7e1f519%3A2425%3A52)%0A%20%20%20%20at%20callFn%20(http%3A%2F%2Flocalhost%3A8080%2Fbase%2Fnode_modules%2Fmocha%2Fmocha.js%3F452afbc6302de4c245643397222e5d4f828605ed%3A4562%3A21)
+	Error: [$injector:modulerr] Failed to instantiate module templates due to:
+	Error: [$injector:nomod] Module 'templates' is not available! You either misspelled the module name or forgot to load it. If registering a module ensure that you specify the dependencies as the second argument.
+	http://errors.angularjs.org/1.3.15/$injector/nomod?p0=templates
+Chrome 43.0.2357 (Windows 7): Executed 27 of 38[31m (16 FAILED)[39m (0 secs / 0.073 secs)
+[1A[2K[31mChrome 43.0.2357 (Windows 7) Unit: Templates "after each" hook FAILED[39m
+	TypeError: Cannot read property 'verifyNoOutstandingExpectation' of undefined
+	    at Context.<anonymous> (base/test/spec/unit/views/templates.js?cf03199129610a3c516b34437b4a471dd5a85ba0:18:15)
+Chrome 43.0.2357 (Windows 7): Executed 28 of 38[31m (17 FAILED)[39m (0 secs / 0.073 secs)
+[1A[2KChrome 43.0.2357 (Windows 7): Executed 28 of 38[31m (17 FAILED)[39m (0.18 secs / 0.073 secs)
+[33mWarning: Task "karma:unit" failed. Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m
+
+
+Execution Time (2015-05-25 13:41:19 UTC)
+wiredep:app       3.1s  █████ 9%
+concurrent:test   7.6s  ███████████ 22%
+connect:test     897ms  ██ 3%
+karma:unit       22.2s  ██████████████████████████████ 65%
+Total 34s
+

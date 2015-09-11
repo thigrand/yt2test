@@ -1,0 +1,28 @@
+<div   class=" container">
+
+
+  <div class="row panel" id="inputRow">
+      <form ng-submit="main.addVideo()">
+        <input id="link-taker" type="text" name="input" ng-model="main.ytUrl" ng-trim="false" ></input>
+        <input id="submit" type="submit" value="Add" ></input>
+      </form>
+  </div>
+  <!-- <button ng-click="cleare()">clear</button> -->
+
+  <div  display-gallery="" 
+        class="row jumbotron" id="gallery" 
+        yt-url-ids="main.ytUrlIds"
+        yt-url="main.ytUrl"
+        current-video-page="main.currentVideoPage">
+  </div>
+  
+  <div class="row" id="pagination">
+    <ul class="pager">
+      <li ><a href="" id="dec-butt" ng-click="main.decrementPage()" >Poprzednia strona</a></li>
+      <li><a href="" id="inc-butt" ng-click="main.incrementPage()" >Następna strona</a></li>
+    </ul> 
+
+  </div> 
+  
+  <pager total-items="pagesAmount" ng-model="main.currentPage"></pager>
+</div>
