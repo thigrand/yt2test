@@ -18,7 +18,7 @@ function videoData2($http, $q, dataFromYT, dataFromVimeo) {
 					return /[a-zA-Z0-9_-]{11}/i.test(id);
 				},
 				instructions: function(id) {
-					console.log('pobieram yt');
+					console.log('pobieram yt', id);
 					videoObjects.push(dataFromYT.get(id));
 				}
 			}
@@ -32,13 +32,13 @@ function videoData2($http, $q, dataFromYT, dataFromVimeo) {
 			var i, msg, type, checker, resultOk, isAny;
 			this.messages = [];
 				// console.log(data);						=> ["124740781", "-rXufJkHRns", "130890972", "rYEDA3JcQqw"]
-			for (i in data) {//(i = 0; i < data.length; i++)
+		//	for (i in data) {//(i = 0; i < data.length; i++)
 				//console.log(data);				//=> 4
 				// console.log(data.hasOwnProperty(i));		=> true
 				// console.log(data[i]);					=> pokazuje co trzeba kolejne elementy data
 				// console.log(i);							//=> od 0 do 3
 
-				if(data.hasOwnProperty(i)) {
+		//		if(data.hasOwnProperty(i)) {
 					// console.log(this);					//=>validator
 					//type = this.config[i];
 					type = "";
@@ -47,7 +47,7 @@ function videoData2($http, $q, dataFromYT, dataFromVimeo) {
 						// console.log(key);					//=>isVimeo, isYouTube
 						//console.log(validator.types[key].validate(data)); //true  
 						type = key
-						return validator.types[key].validate(data[i]);
+						return validator.types[key].validate(data);
 					});
 
 					//if(isAny){};
@@ -56,10 +56,10 @@ function videoData2($http, $q, dataFromYT, dataFromVimeo) {
 					
 					//console.log(type, "type");				//=> isVimeo
 					//console.log(checker, "checker");		//=> obiekt  isVimeo lub isYouTube
-					this.types[type].instructions(data[i]);
-					if(!type) {
-						continue;
-					}
+					this.types[type].instructions(data);
+					// if(!type) {
+					// 	continue;
+					// }
 					if(!checker) {
 						throw {
 							name: 'ValidationError',
@@ -75,8 +75,8 @@ function videoData2($http, $q, dataFromYT, dataFromVimeo) {
 						msg = 'Invalid value *' + i + '*; ' + checker.instuctions;
 						this.messages.push(msg);
 					}
-				}
-			}
+		//		}
+		//	}
 			return this.hasErrors();
 		},
 		hasErrors: function() {
@@ -87,19 +87,21 @@ function videoData2($http, $q, dataFromYT, dataFromVimeo) {
 	function getData(videosID){
 		
 		var oneId;
-		//console.log("wchodze", videosID);
+		console.log("wchodze", videosID);
 		validator.validate(videosID);
-		//console.log(videoObjects);
+		console.log(videoObjects);
+
 		// for(var i = 0; i < videosID.length; i++) {
-		// 	console.log("w petli");
 		// 	oneId = videosID[i];
 		// 	//console.log(i, validator.validate(oneId));
 			
 		// 	if(validator.hasErrors()) {
 		// 		console.log(validator.messages.join('\n'));
 		// 	}
-		
-		// 	videoObjects.push(dataFromVimeo.get(videosID[i]));
+		// 	validator.validate(oneId)
+		// 	//videoObjects.push();
+		// 	console.log(oneId, "oneId");
+		// 	console.log(videoObjects);
 		// 	//videoObjects.push("getDataFromYT(videosID[i])");
 		// }
 		//console.log("zwracam");

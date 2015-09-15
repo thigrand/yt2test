@@ -18,9 +18,9 @@ function MainCtrl(objectNeutralizer, videoData, storage, videoData2, checkAnchor
 
 // console.log(main.ytUrlIds, "ytUrlIds");
 
-	function getData() {
+	function getData(id) {
 		
-		videoData2.getData(main.ytUrlIds)
+		videoData2.getData(id)
 		// videoData.getData(main.ytUrlIds)
 		.then(function(data) {
 			main.videoObjects = objectNeutralizer.getData(data);
@@ -29,29 +29,35 @@ function MainCtrl(objectNeutralizer, videoData, storage, videoData2, checkAnchor
 			// console.log( main.currentVideoPage);
 		});
 	};
-	getData();
+	
+	for(var i = 0 ; i < main.ytUrlIds.length ; i++) {
+		//console.log(main.ytUrlIds[i])
+		getData(main.ytUrlIds[i]);
+	}
+
+	
 
 var currentPage = 0;
 	main.lastLsNumber = 1 + Number(storage.getLastKeyNumber()) || 1;
 	main.addVideo = function() {
-		console.log('start');
+
 		var idFromUrl = checkAnchor.checkUrl(main.ytUrl);
 		
-		console.log(main.ytUrlIds.length);
+
 		if (idFromUrl !== -1) {
 			main.ytUrlIds.push(idFromUrl);
 			storage.setStorage(main.lastLsNumber++, idFromUrl);
 
-			getData();
+			getData(idFromUrl);
 			
-			console.log('ogarniam film');
+
 		} else {
 			alert('Błędny adres linka.');
 			console.log('błąd');
 		}
-		console.log('koniec');
-		console.log(main.ytUrlIds.length);
+
 	};
+
 
 
 }
