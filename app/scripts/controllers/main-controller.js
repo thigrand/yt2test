@@ -1,68 +1,53 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name ytApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the ytApp
- */
-function MainCtrl(objectNeutralizer, videoData, storage, videoData2, checkAnchor, pagination) {
-
+function MainCtrl(storage, dataNozzle, checkAnchor, pagination, $q, videoStorage) {
 
 	var main = this;
+	var currentPage = 0;
+
 	main.ytUrl = ''; //take value from input
 	main.ytUrlIds = storage.getIdsFromStorage();
 	main.videoObjects = [];
 	main.currentVideoPage = [];
+	main.addVideo = addVideo;
+	main.lastLsNumber = 1 + parseInt(storage.getLastKeyNumber()) || 1;
 
-// console.log(main.ytUrlIds, "ytUrlIds");
+
+
+	var promisesArray = [];
+	main.ytUrlIds.forEach(function(id){
+		promisesArray.push(dataNozzle.getData(id));
+	});
+
+	$q.all(promisesArray).then(function(result) {
+				//videoStorage.saveVideos(result);
+				main.videoObjects = result;
+				main.currentVideoPage = pagination.getArrayForView(main.videoObjects, currentPage);
+	});
 
 	function getData(id) {
-		
-		videoData2.getData(id)
-		// videoData.getData(main.ytUrlIds)
-		.then(function(data) {
-			main.videoObjects = objectNeutralizer.getData(data);
-			main.currentVideoPage = pagination.getArrayForView(main.videoObjects, currentPage);// || objectNeutralizer.getData(data);
-			// console.log(main.videoObjects);
-			// console.log( main.currentVideoPage);
-		});
-	};
-	
-	for(var i = 0 ; i < main.ytUrlIds.length ; i++) {
-		//console.log(main.ytUrlIds[i])
-		getData(main.ytUrlIds[i]);
+		dataNozzle.getData(id)
+			.then(function(data) {
+				main.videoObjects.push(data);
+			});
 	}
+	//console.log(videoStorage.loadVideos());
 
-	
 
-var currentPage = 0;
-	main.lastLsNumber = 1 + Number(storage.getLastKeyNumber()) || 1;
-	main.addVideo = function() {
-
+	function addVideo() {
 		var idFromUrl = checkAnchor.checkUrl(main.ytUrl);
-		
 
 		if (idFromUrl !== -1) {
 			main.ytUrlIds.push(idFromUrl);
 			storage.setStorage(main.lastLsNumber++, idFromUrl);
 
 			getData(idFromUrl);
-			
 
 		} else {
 			alert('Błędny adres linka.');
-			console.log('błąd');
 		}
-
-	};
-
-
-
+	}
 }
 angular
-.module('ytApp')
-.controller('MainCtrl', ['objectNeutralizer', 'videoData', 'storage', 'videoData2', 'checkAnchor', 'pagination', MainCtrl]);
-// angular.module('ytApp').controller('MainCtrl', ['$scope', '$log',  MainCtrl]);
-
+	.module('ytApp')
+	.controller('MainCtrl', ['storage', 'dataNozzle', 'checkAnchor', 'pagination', '$q', 'videoStorage', MainCtrl]);

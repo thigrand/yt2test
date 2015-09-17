@@ -16,7 +16,7 @@ function displayGallery() {
 			currentVideoPage: '='
 		},
 		controller:  'videoCaster as vidcast', 
-		link: function($scope) {
+		link: function() {
 	
 		}
 	};
