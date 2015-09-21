@@ -29,7 +29,7 @@ function youtubeVideo($http, $q, objectNeutralizer) {
 		return /[a-zA-Z0-9_-]{11}/i.test(id);
 	}
 }
-angular.module('youtubeModule').factory('youtubeVideo', ['$http','$q', 'objectNeutralizer', youtubeVideo]);
+angular.module('videoModule').factory('youtubeVideo', ['$http','$q', 'objectNeutralizer', youtubeVideo]);
 
 
 

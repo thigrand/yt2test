@@ -23,4 +23,4 @@ function validator(vimeoVideo, youtubeVideo) {
 	};
 
 }
-angular.module('youtubeModule').factory('validator', ['vimeoVideo', 'youtubeVideo', validator]);
+angular.module('videoModule').factory('validator', ['vimeoVideo', 'youtubeVideo', validator]);

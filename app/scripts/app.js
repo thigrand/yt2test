@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('youtubeModule',[]);
-angular.module('vimeoModule',[]);
+angular.module('videoModule',[]);
 
 angular
   .module('ytApp', [
@@ -15,8 +15,7 @@ angular
     'ngTouch',
     'LocalStorageModule',
     'angular-sortable-view',
-    'youtubeModule',
-    'vimeoModule',
+    'videoModule'
 
   ])
   .config(function ($stateProvider, $locationProvider) {

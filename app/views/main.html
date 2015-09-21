@@ -2,10 +2,11 @@
 
 
   <div class="row panel" id="inputRow">
-      <form ng-submit="main.addVideo()">
+      <form ng-submit="main.addVideo()" class="form">
         <input id="link-taker" type="text" name="input" ng-model="main.ytUrl" ng-trim="false" ></input>
         <input id="submit" type="submit" value="Add" ></input>
       </form>
+      <button class="addfavorite right">Ulubione</button>
   </div>
   <!-- <button ng-click="cleare()">clear</button> -->
 
@@ -13,7 +14,8 @@
         class="row jumbotron" id="gallery" 
         yt-url-ids="main.ytUrlIds"
         yt-url="main.ytUrl"
-        current-video-page="main.currentVideoPage">
+        current-video-page="main.currentVideoPage"
+        remove-action= "main.removeAction">
   </div>
   
   <div class="row" id="pagination">

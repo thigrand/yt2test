@@ -5,6 +5,7 @@ function objectNeutralizer() {
     function transformVimeoObject(videoObject) {
         var simpleObject = {
             source: 'vimeo',
+            favorite: false,
             id: videoObject[0].id,
             name: videoObject[0].title,
             viewCount: videoObject[0].stats_number_of_plays,
@@ -19,6 +20,7 @@ function objectNeutralizer() {
     function transformYouTubeObject(videoObject) {
         var simpleObject = {
             source: 'youtube',
+            favorite: false,
             id: videoObject.items[0].id,
             name: videoObject.items[0].snippet.title,
             viewCount: videoObject.items[0].statistics.viewCount,
@@ -35,7 +37,7 @@ function objectNeutralizer() {
         transformVimeoObject: transformVimeoObject
     };
 }
-angular.module('ytApp').factory('objectNeutralizer', [objectNeutralizer]);
+angular.module('videoModule').factory('objectNeutralizer', [objectNeutralizer]);
 
     // function getData(data) {
 

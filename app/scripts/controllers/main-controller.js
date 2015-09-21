@@ -1,47 +1,53 @@
 'use strict';
 
-function MainCtrl(storage, dataNozzle, checkAnchor, pagination, $q, videoStorage) {
+function MainCtrl(storage, dataNozzle, checkAnchor, pagination, videoStorage, favorite) {
 
-	var main = this;
-	var currentPage = 0;
-
-	main.ytUrl = ''; //take value from input
-	main.ytUrlIds = storage.getIdsFromStorage();
-	main.videoObjects = [];
+	var main              = this;
+	var currentPage       = 0;
+	
+	main.ytUrl            = ''; //take value from input
+	main.ytUrlIds         = videoStorage.getIdsFromStorage('videos') || [];
+	main.videoObjects     = videoStorage.loadArrayFromStorage('videos');
 	main.currentVideoPage = [];
-	main.addVideo = addVideo;
-	main.lastLsNumber = 1 + parseInt(storage.getLastKeyNumber()) || 1;
+	main.addVideo         = addVideo;
+	main.lastLsNumber     = 1 + parseInt(storage.getLastKeyNumber()) || 1;
 
-
-
-	var promisesArray = [];
-	main.ytUrlIds.forEach(function(id){
-		promisesArray.push(dataNozzle.getData(id));
-	});
-
-	$q.all(promisesArray).then(function(result) {
-				//videoStorage.saveVideos(result);
-				main.videoObjects = result;
-				main.currentVideoPage = pagination.getArrayForView(main.videoObjects, currentPage);
-	});
-
-	function getData(id) {
-		dataNozzle.getData(id)
-			.then(function(data) {
-				main.videoObjects.push(data);
-			});
+	main.removeAction = function(id) {
+		console.log("removeAction", id);
+		videoStorage.removeElement(main.videoObjects, id);
+		main.videoObjects = videoStorage.loadArrayFromStorage('videos');
 	}
-	//console.log(videoStorage.loadVideos());
+
+	function getAllData(ids) {
+		console.log(ids);
+		dataNozzle.getAllData(ids).then(function(result){
+			main.videoObjects     = result;
+			main.currentVideoPage = pagination.getArrayForView(main.videoObjects, currentPage);
+			console.log(result);
+			videoStorage.saveArrayToStorage('videos', result);
+			
+		});
+	}
+
+	if(main.ytUrlIds) {
+		getAllData(main.ytUrlIds);
+		favorite.showFavorite();
+	}
+	
 
 
 	function addVideo() {
 		var idFromUrl = checkAnchor.checkUrl(main.ytUrl);
-
 		if (idFromUrl !== -1) {
-			main.ytUrlIds.push(idFromUrl);
-			storage.setStorage(main.lastLsNumber++, idFromUrl);
 
-			getData(idFromUrl);
+			dataNozzle.getData(idFromUrl)
+			.then(function(data) {
+				main.videoObjects.push(data); // gdy to wywalam i dodaje to co niżej to się widok nie przeładowuje.
+				main.currentVideoPage = pagination.getArrayForView(main.videoObjects, currentPage);
+				videoStorage.addDataToStorage('videos', data);
+				// main.videoObjects = videoStorage.loadArrayFromStorage('videos');
+				main.ytUrlIds = videoStorage.getIdsFromStorage('videos');
+			});
 
 		} else {
 			alert('Błędny adres linka.');
@@ -50,4 +56,4 @@ function MainCtrl(storage, dataNozzle, checkAnchor, pagination, $q, videoStorage
 }
 angular
 	.module('ytApp')
-	.controller('MainCtrl', ['storage', 'dataNozzle', 'checkAnchor', 'pagination', '$q', 'videoStorage', MainCtrl]);
+	.controller('MainCtrl', ['storage', 'dataNozzle', 'checkAnchor', 'pagination', 'videoStorage', 'favorite', MainCtrl]);

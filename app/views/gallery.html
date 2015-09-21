@@ -1,44 +1,48 @@
-
 <div > 
+	<h3>Gallery:</h3>
 
-    <h3>Gallery:</h3>
+	<ul class="list-inline list-unstyled " sv-root sv-part="vidcast.currentVideoPage" id="gall" > <!-- https://github.com/kamilkp/angular-sortable-view -->
+		<li ng-repeat="video in vidcast.currentVideoPage track by $index" class=" col-md-3 alert alert-white alert-dismissable" sv-element="opts" currentObject="{{video}}" index="{{$index}}">
 
-    <ul class="list-inline list-unstyled " sv-root sv-part="vidcast.currentVideoPage" id="gall" > <!-- https://github.com/kamilkp/angular-sortable-view -->
-        <li ng-repeat="video in vidcast.currentVideoPage track by $index" class=" col-md-3 alert alert-white alert-dismissable" sv-element="opts" currentObject="{{video}}" index="{{$index}}">
-  <!--           <div class="modal fade" id="myModal-{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close close-margin" data-dismiss="modal"><span aria-hidden="true">&times; </span><span class="sr-only">Zamknij </span></button>
-                            <h4 class="modal-title" id="myModalLabel">{{video.name}}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <iframe ng-src="{{video.playerUrl | trustAsResourceUrl}}" class="center-block" width="640" height="390"></iframe>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <div>
-                <button type="button" class="close close-margin" data-dismiss="alert" aria-label="Close" aria-hidden="true" ng-click="vidcast.closeBox($index);" id="closebox">&times;</button>
-                <div class="col-md-12" id="thumbnail">
-                    <img ng-src="{{video.thumbnail}}" class="img-rounded img-thumbnail center-block" 
+			<div class="box">
+				<button type="button" class="close close-margin" data-dismiss="alert" aria-label="Close" aria-hidden="true" ng-click="vidcast.removeAction(video.id);" id="closebox">&times;</button>
 
-                    ui-sref='video-player({ source: video.source, 
-                                            id:     video.id })'>
-                    <!-- <img ng-src="{{video.thumbnail}}" class="img-rounded img-thumbnail center-block" data-toggle="modal" data-target="#myModal-{{$index}}"> -->
-                </div>
-                <br>
+				<div class="col-md-12" id="thumbnail">
+					<img ng-src="{{video.thumbnail}}" 
+					class="img-rounded img-thumbnail center-block" 
+					ui-sref='video-player({ source: video.source, 
+																	id:     video.id })'>
+				</div><br>
 
-                <ul class="row-same-height" id="video-data">
-                    <li><b>Nazwa filmiku:</b> <span>{{video.name}}</span></li>
-                    <li><b>Który obejrzano:</b> <span>{{video.viewCount}}</span> razy</li>
-                    <li><b>I polubiono:</b> <span>{{video.likesCount}}</span> razy</li>
-               </ul>
-            </div>
-        </li>
-    </ul>
-      <pager total-items="pagesAmount" ng-model="vidcast.currentPage"></pager>
+				<ul class="row-same-height" id="video-data">
+					<li><b>Nazwa filmiku:</b> <span>{{video.name}}</span></li>
+					<li><b>Który obejrzano:</b> <span>{{video.viewCount}}</span> razy</li>
+					<li><b>I polubiono:</b> <span>{{video.likesCount}}</span> razy</li>
+				</ul>
+
+				<button class="favorite" ng-click="vidcast.addToFavorite(video);" >{{vidcast.favoriteButton}}</button>
+			</div>
+		</li>
+	</ul>
 </div>
+
+
+
+<!--           <div class="modal fade" id="myModal-{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+												<div class="modal-header">
+														<button type="button" class="close close-margin" data-dismiss="modal"><span aria-hidden="true">&times; </span><span class="sr-only">Zamknij </span></button>
+														<h4 class="modal-title" id="myModalLabel">{{video.name}}</h4>
+												</div>
+												<div class="modal-body">
+														<iframe ng-src="{{video.playerUrl | trustAsResourceUrl}}" class="center-block" width="640" height="390"></iframe>
+												</div>
+												<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+												</div>
+										</div>
+								</div>
+						</div> 
+modal-->
+					<!-- <img ng-src="{{video.thumbnail}}" class="img-rounded img-thumbnail center-block" data-toggle="modal" data-target="#myModal-{{$index}}"> -->

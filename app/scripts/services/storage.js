@@ -5,7 +5,7 @@ function storage(localStorageService) {
 	var getIdsFromStorage = function() {
 
 		var idsFromStorage = [];
-		var keysOfStorage = localStorageService.keys().sort(numbersComparator);
+		var keysOfStorage  = localStorageService.keys().sort(numbersComparator);
 		for (var key in keysOfStorage) { //key 
 			idsFromStorage.push(localStorageService.get(keysOfStorage[key]));
 		}

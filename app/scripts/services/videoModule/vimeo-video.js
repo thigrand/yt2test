@@ -27,4 +27,4 @@ function vimeoVideo($http, $q, objectNeutralizer) {
 	}
 
 }
-angular.module('vimeoModule').factory('vimeoVideo', ['$http','$q', 'objectNeutralizer', vimeoVideo]);
+angular.module('videoModule').factory('vimeoVideo', ['$http','$q', 'objectNeutralizer', vimeoVideo]);
