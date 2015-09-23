@@ -6,25 +6,33 @@ function videoCaster(storage, pagination, localStorageService, $stateParams, vid
 	vidcast.ytUrlIds         = storage.getIdsFromStorage();
 	vidcast.videoObjects     = [];
 	vidcast.currentVideoPage = [];
-	vidcast.favoriteButton   = 'Dodaj do ulubionych';
 	
-	// vidcast.removeAction(5);
 	vidcast.videoToPlay      = urlForPlayer();
-	vidcast.addToFavorite    = addToFavorite;
+	vidcast.changeFavorite   = favorite.changeFavorite;//changeFavorite;
+	vidcast.play = play;
 
-	vidcast.play = function(url) {
-		vidcast.videoToPlay = url;
-		return url;
+
+
+	var currentPage  = 0;
+	var videosAmount = vidcast.ytUrlIds.length;
+	var boxPerPage   = 10;
+	var pagesAmount  = window.Math.floor(videosAmount / boxPerPage) + 1;
+	vidcast.incrementPage = incrementPage;
+	vidcast.decrementPage = decrementPage;
+
+	function incrementPage() {
+		if (currentPage < pagesAmount) {
+			currentPage++;
+			vidcast.currentVideoPage = pagination.getArrayForView(currentPage);
+		}
 	};
 
-	function addToFavorite(object) {
-		favorite.addToFavorite(object);
-		if(object.favorite === true) {
-			vidcast.favoriteButton = 'Usuń z ulubionych';
-		} else{
-			vidcast.favoriteButton   = 'Dodaj do ulubionych';
+	function decrementPage() {
+		if (currentPage > 0) {
+			currentPage--;
+			vidcast.currentVideoPage = pagination.getArrayForView(currentPage);
 		}
-	}
+	};
 
 	function urlForPlayer() {
 		var url;
@@ -36,38 +44,13 @@ function videoCaster(storage, pagination, localStorageService, $stateParams, vid
 		}
 		return url;
 	}
-
-	vidcast.closeBox = function(boxIndex) {
-		// var keysOfStorage = localStorageService.keys().sort(numbersComparator);
-		// localStorageService.remove(keysOfStorage[boxIndex]);
-		// vidcast.ytUrlIds = storage.getIdsFromStorage();
-		var oldArray = videoStorage.loadArrayFromStorage('idsArray');
-		var newArray = [];
-		// console.log(boxIndex, "oldArray", oldArray);
-		newArray = videoStorage.removeElement(oldArray, boxIndex);
-		// console.log("newArray", newArray)
-		vidcast.ytUrlIds = newArray;
+	
+	function play(url) {
+		vidcast.videoToPlay = url;
+		return url;
 	};
 
-		var currentPage  = 0;
-		var videosAmount = vidcast.ytUrlIds.length;
-		var boxPerPage   = 10;
-		var pagesAmount  = window.Math.floor(videosAmount / boxPerPage) + 1;
-
-	vidcast.incrementPage = function() {
-		if (currentPage < pagesAmount) {
-			currentPage++;
-			vidcast.currentVideoPage = pagination.getArrayForView(vidcast.videoObjects, currentPage);
-		}
-	};
-	vidcast.decrementPage = function() {
-		if (currentPage > 0) {
-			currentPage--;
-			vidcast.currentVideoPage = pagination.getArrayForView(vidcast.videoObjects, currentPage);
-		}
-	};
-
-	var numbersComparator = function(a, b) {
+	function numbersComparator(a, b) {
 		return a - b;
 	};
 
@@ -75,3 +58,17 @@ function videoCaster(storage, pagination, localStorageService, $stateParams, vid
 angular
 	.module('ytApp')
 	.controller('videoCaster', ['storage', 'pagination', 'localStorageService', '$stateParams', 'videoStorage', 'favorite', videoCaster]);
+
+
+
+	// 	vidcast.closeBox = function(boxIndex) {
+	// 	// var keysOfStorage = localStorageService.keys().sort(numbersComparator);
+	// 	// localStorageService.remove(keysOfStorage[boxIndex]);
+	// 	// vidcast.ytUrlIds = storage.getIdsFromStorage();
+	// 	var oldArray = videoStorage.loadArrayFromStorage('idsArray');
+	// 	var newArray = [];
+	// 	// console.log(boxIndex, "oldArray", oldArray);
+	// 	newArray = videoStorage.removeElement(oldArray, boxIndex);
+	// 	// console.log("newArray", newArray)
+	// 	vidcast.ytUrlIds = newArray;
+	// };

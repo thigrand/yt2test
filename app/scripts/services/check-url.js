@@ -1,6 +1,6 @@
 'use strict';
 
-function checkAnchor() {
+function checkAnchor(videoStorage) {
 	var takeIdFromUrl = function(url, switcher) {
 		var videoId = '';
 
@@ -21,7 +21,12 @@ function checkAnchor() {
 
 			videoId = url.substring(18, 27);
 		}
-		return (videoId) ? videoId : -1;
+		if(isUnique(videoId)) {
+			return (videoId) ? videoId : -1;
+		} else {
+			alert("Ten film został już dodany");
+			return -1;
+		}
 	};
 	var checkUrl = function(url) {
 		var goodUrl = -1;
@@ -44,9 +49,17 @@ function checkAnchor() {
 
 		return (goodUrl) ? goodUrl : -1;
 	};
+	function isUnique(id) {
+		var idsArray = videoStorage.getIdsFromStorage('videos');
+		var answer = idsArray.some(function(element){
+			return element === id;
+		})
+		console.log("is unique", !answer);
+		return !answer;
+	}
 
 	return {
 		checkUrl: checkUrl
 	};
 }
-angular.module('ytApp').factory('checkAnchor', [checkAnchor]);
+angular.module('ytApp').factory('checkAnchor', ['videoStorage', checkAnchor]);

@@ -2,7 +2,9 @@
 	<h3>Gallery:</h3>
 
 	<ul class="list-inline list-unstyled " sv-root sv-part="vidcast.currentVideoPage" id="gall" > <!-- https://github.com/kamilkp/angular-sortable-view -->
-		<li ng-repeat="video in vidcast.currentVideoPage track by $index" class=" col-md-3 alert alert-white alert-dismissable" sv-element="opts" currentObject="{{video}}" index="{{$index}}">
+		<li ng-repeat="video in vidcast.currentVideoPage" 
+				class=" col-md-3 alert alert-white alert-dismissable" 
+				sv-element="opts" currentObject="{{video}}" index="{{$index}}">
 
 			<div class="box">
 				<button type="button" class="close close-margin" data-dismiss="alert" aria-label="Close" aria-hidden="true" ng-click="vidcast.removeAction(video.id);" id="closebox">&times;</button>
@@ -20,7 +22,8 @@
 					<li><b>I polubiono:</b> <span>{{video.likesCount}}</span> razy</li>
 				</ul>
 
-				<button class="favorite" ng-click="vidcast.addToFavorite(video);" >{{vidcast.favoriteButton}}</button>
+				<button class="favorite" ng-click="vidcast.changeFavorite(video);" ng-if="video.favorite">Usuń z ulubionych</button>
+				<button class="favorite" ng-click="vidcast.changeFavorite(video);" ng-if="!video.favorite">Dodaj do ulubionych</button>
 			</div>
 		</li>
 	</ul>

@@ -1,14 +1,16 @@
 'use strict';
 
-function pagination() {
+function pagination(videoStorage) {
 
 	var boxPerPage = 10;
+	var objectsArray ;
 
-	var getArrayForView = function(arrayOfAllVideos, currentPage) {
+	var getArrayForView = function(currentPage) {
+		objectsArray = videoStorage.loadArrayFromStorage('videos');
 		var arrayForView = [],
 			iterateFrom = currentPage * boxPerPage,
 			iterateTo = iterateFrom + boxPerPage;
-		arrayForView = arrayOfAllVideos.slice(iterateFrom, iterateTo);
+		arrayForView = objectsArray.slice(iterateFrom, iterateTo);
 
 		return arrayForView;
 	};
@@ -17,4 +19,4 @@ function pagination() {
 		getArrayForView: getArrayForView
 	};
 }
-angular.module('ytApp').factory('pagination', [pagination]);
+angular.module('ytApp').factory('pagination', ['videoStorage', pagination]);

@@ -1,6 +1,6 @@
 'use strict';
 
-function MainCtrl(storage, dataNozzle, checkAnchor, pagination, videoStorage, favorite) {
+function MainCtrl(dataNozzle, checkAnchor, pagination, videoStorage) {
 
 	var main              = this;
 	var currentPage       = 0;
@@ -10,7 +10,13 @@ function MainCtrl(storage, dataNozzle, checkAnchor, pagination, videoStorage, fa
 	main.videoObjects     = videoStorage.loadArrayFromStorage('videos');
 	main.currentVideoPage = [];
 	main.addVideo         = addVideo;
-	main.lastLsNumber     = 1 + parseInt(storage.getLastKeyNumber()) || 1;
+	main.filters          = { };
+	// main.filters.favorite = false;
+
+	if(main.ytUrlIds) {
+		getAllData(main.ytUrlIds);
+
+	}
 
 	main.removeAction = function(id) {
 		console.log("removeAction", id);
@@ -19,36 +25,26 @@ function MainCtrl(storage, dataNozzle, checkAnchor, pagination, videoStorage, fa
 	}
 
 	function getAllData(ids) {
-		console.log(ids);
+		console.log("ids", ids);
 		dataNozzle.getAllData(ids).then(function(result){
 			main.videoObjects     = result;
-			main.currentVideoPage = pagination.getArrayForView(main.videoObjects, currentPage);
-			console.log(result);
+			main.currentVideoPage = pagination.getArrayForView(currentPage);
+			console.log('video objects', result);
 			videoStorage.saveArrayToStorage('videos', result);
 			
 		});
 	}
 
-	if(main.ytUrlIds) {
-		getAllData(main.ytUrlIds);
-		favorite.showFavorite();
-	}
-	
-
-
 	function addVideo() {
 		var idFromUrl = checkAnchor.checkUrl(main.ytUrl);
 		if (idFromUrl !== -1) {
-
 			dataNozzle.getData(idFromUrl)
 			.then(function(data) {
-				main.videoObjects.push(data); // gdy to wywalam i dodaje to co niżej to się widok nie przeładowuje.
-				main.currentVideoPage = pagination.getArrayForView(main.videoObjects, currentPage);
 				videoStorage.addDataToStorage('videos', data);
-				// main.videoObjects = videoStorage.loadArrayFromStorage('videos');
-				main.ytUrlIds = videoStorage.getIdsFromStorage('videos');
+				// main.ytUrlIds = videoStorage.getIdsFromStorage('videos');Nie potrzebne?
+				main.videoObjects = videoStorage.loadArrayFromStorage('videos');
+				main.currentVideoPage = pagination.getArrayForView(currentPage);
 			});
-
 		} else {
 			alert('Błędny adres linka.');
 		}
@@ -56,4 +52,4 @@ function MainCtrl(storage, dataNozzle, checkAnchor, pagination, videoStorage, fa
 }
 angular
 	.module('ytApp')
-	.controller('MainCtrl', ['storage', 'dataNozzle', 'checkAnchor', 'pagination', 'videoStorage', 'favorite', MainCtrl]);
+	.controller('MainCtrl', ['dataNozzle', 'checkAnchor', 'pagination', 'videoStorage', MainCtrl]);
