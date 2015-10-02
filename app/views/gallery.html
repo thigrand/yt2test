@@ -1,8 +1,60 @@
 <div > 
 	<h3>Gallery:</h3>
 
-	<ul class="list-inline list-unstyled " sv-root sv-part="vidcast.currentVideoPage" id="gall" > <!-- https://github.com/kamilkp/angular-sortable-view -->
-		<li ng-repeat="video in vidcast.currentVideoPage" 
+
+	<md-list layout="row" sv-root sv-part="vidcast.currentVideoPage" id="gall" class="list">
+		<md-list-item class="list-item "
+		ng-repeat="video in vidcast.currentVideoPage | favoritesFilter:this" 
+		sv-element="opts"> 
+
+			<md-card class="box md-whiteframe-3dp">
+				<div class="flex-buttons">
+
+					<md-button ng-click="vidcast.showModal($event, video)" class="md-icon-button"flex flex-md="100" aria-label="Modal">
+    				<md-icon md-svg-icon="images/tv.svg"></md-icon>
+    			</md-button> 
+					<span flex></span>
+
+					<md-button ng-click="vidcast.removeAction(video.id);" id="closebox" class="close md-icon-button" aria-label="Close" aria-hidden="true">
+						&times;
+					</md-button>
+
+				</div>
+
+				<div class="col-md-12" id="thumbnail">
+					<img  ng-src="{{video.thumbnail}}" 
+								class="img-rounded img-thumbnail center-block" 
+								ui-sref='video-player({ source: video.source, id: video.id })'>
+				</div>
+
+				<md-list id="video-data" >
+					<md-list-item><md-list-item-text>
+						<b>Nazwa filmiku: </b> <span> {{ video.name}}</span>
+					</md-list-item-text></md-list-item>
+					<md-list-item><md-list-item-text>
+						<b>Który obejrzano: </b> <span> {{ video.viewCount}}</span> razy
+					</md-list-item-text></md-list-item>
+					<md-list-item><md-list-item-text>
+						<b>I polubiono: </b> <span> {{ video.likesCount}}</span> razy
+					</md-list-item-text></md-list-item>
+				</md-list>
+
+				<span flex></span>
+				<md-button class="favorite" ng-click="vidcast.changeFavorite(video);" ng-if="video.favorite">Usuń z ulubionych</md-button>
+				<md-button class="favorite" ng-click="vidcast.changeFavorite(video);" ng-if="!video.favorite">Dodaj do ulubionych</md-button>
+			</md-card>
+
+		</md-list-item>
+	</md-list>
+
+
+
+
+
+
+<!-- 
+	<ul class="list-inline list-unstyled " sv-root sv-part="vidcast.currentVideoPage" id="gall" > <!-- https://github.com/kamilkp/angular-sortable-view 
+		<li ng-repeat="video in vidcast.currentVideoPage | favoritesFilter:this" 
 				class=" col-md-3 alert alert-white alert-dismissable" 
 				sv-element="opts" currentObject="{{video}}" index="{{$index}}">
 
@@ -21,12 +73,11 @@
 					<li><b>Który obejrzano:</b> <span>{{video.viewCount}}</span> razy</li>
 					<li><b>I polubiono:</b> <span>{{video.likesCount}}</span> razy</li>
 				</ul>
-
-				<button class="favorite" ng-click="vidcast.changeFavorite(video);" ng-if="video.favorite">Usuń z ulubionych</button>
-				<button class="favorite" ng-click="vidcast.changeFavorite(video);" ng-if="!video.favorite">Dodaj do ulubionych</button>
+				<md-button class="favorite" ng-click="vidcast.changeFavorite(video);" ng-if="video.favorite">Usuń z ulubionych</md-button>
+				<md-button class="favorite" ng-click="vidcast.changeFavorite(video);" ng-if="!video.favorite">Dodaj do ulubionych</md-button>
 			</div>
 		</li>
-	</ul>
+	</ul> -->
 </div>
 
 
@@ -35,14 +86,14 @@
 								<div class="modal-dialog modal-lg">
 										<div class="modal-content">
 												<div class="modal-header">
-														<button type="button" class="close close-margin" data-dismiss="modal"><span aria-hidden="true">&times; </span><span class="sr-only">Zamknij </span></button>
+														<md-button type="md-button" class="close close-margin" data-dismiss="modal"><span aria-hidden="true">&times; </span><span class="sr-only">Zamknij </span></md-button>
 														<h4 class="modal-title" id="myModalLabel">{{video.name}}</h4>
 												</div>
 												<div class="modal-body">
 														<iframe ng-src="{{video.playerUrl | trustAsResourceUrl}}" class="center-block" width="640" height="390"></iframe>
 												</div>
 												<div class="modal-footer">
-														<button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+														<md-button type="md-button" class="btn btn-default" data-dismiss="modal">Zamknij</md-button>
 												</div>
 										</div>
 								</div>

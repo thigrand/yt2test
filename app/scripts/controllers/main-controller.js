@@ -9,8 +9,13 @@ function MainCtrl(dataNozzle, checkAnchor, pagination, videoStorage) {
 	main.ytUrlIds         = videoStorage.getIdsFromStorage('videos') || [];
 	main.videoObjects     = videoStorage.loadArrayFromStorage('videos');
 	main.currentVideoPage = [];
+
+	main.showFavorite     ;
+	main.filterFavorites  = filterFavorites;
+
 	main.addVideo         = addVideo;
-	main.filters          = { };
+	main.removeAction     = removeAction;
+
 	// main.filters.favorite = false;
 
 	if(main.ytUrlIds) {
@@ -18,7 +23,17 @@ function MainCtrl(dataNozzle, checkAnchor, pagination, videoStorage) {
 
 	}
 
-	main.removeAction = function(id) {
+	function filterFavorites() {
+		if(main.showFavorite === true) {
+			main.showFavorite = false;
+		} else {
+			main.showFavorite = true;
+		}
+		console.log("main.showFavorite", main.showFavorite);
+
+	}
+
+	function removeAction(id) {
 		console.log("removeAction", id);
 		videoStorage.removeElement(main.videoObjects, id);
 		main.videoObjects = videoStorage.loadArrayFromStorage('videos');

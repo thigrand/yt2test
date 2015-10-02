@@ -8,6 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <!-- endbuild -->
@@ -67,6 +68,7 @@
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/angular-sortable-view/src/angular-sortable-view.js"></script>
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <!-- endbower -->
 
     
@@ -77,6 +79,9 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
         <script src="scripts/app.js"></script>
+
+        <script src="scripts/filters/trustAsResourceUrl.js"></script>
+        <script src="scripts/filters/favoritesFilter.js"></script>
 
         <script src="scripts/services/storage.js"></script>
         <script src="scripts/services/video-storage.js"></script> 
@@ -90,15 +95,18 @@
         <script src="scripts/services/videoModule/data-nozzle.js"></script>
 
 
+        <script src="scripts/controllers/dialog-controller.js"></script>
+
         <script src="scripts/controllers/video-caster.js"></script>
         <script src="scripts/directives/display-gallery.js"></script>
         <script src="scripts/controllers/main-controller.js"></script>
        
         <script src="scripts/services/check-url.js"></script>
-    
 
-        <script src="scripts/filters/trustAsResourceUrl.js"></script>
-        <script src="scripts/filters/favoritesFilter.js"></script>
+
+        
+
+
 
         <script src="scripts/services/pagination.js"></script>
         <script src="scripts/services/favorite.js"></script>

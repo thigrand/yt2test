@@ -12,6 +12,7 @@ function favorite(videoStorage) {
 		console.log('favoritesArray', favoritesArray);
 		return favoritesArray;
 	}
+
 	function addToFavorites(obj){
 		objectsArray = videoStorage.loadArrayFromStorage('videos');
 		objectsArray.forEach(function(element){
@@ -22,6 +23,7 @@ function favorite(videoStorage) {
 		});
 		console.log("objectsArray", objectsArray);
 		videoStorage.saveArrayToStorage('videos', objectsArray);
+		return objectsArray;
 	}
 
 	function removeFromFavorites(obj) {
@@ -33,15 +35,19 @@ function favorite(videoStorage) {
 			};
 		});
 		videoStorage.saveArrayToStorage('videos', objectsArray);
+		return objectsArray;
 	}
+
 	function changeFavorite(obj){
 		objectsArray = videoStorage.loadArrayFromStorage('videos');
-		objectsArray.forEach(function(element){
+		objectsArray.some(function(element){
 			if(element.id === obj.id){
 				console.log("change favorites", obj.id);
-				element.favorite = (element.favorite === true) ? false : true;
+				element.favorite = !element.favorite;
+				return true;
 			};
 		});
+		obj.favorite = !obj.favorite;
 		videoStorage.saveArrayToStorage('videos', objectsArray);
 		console.log(showFavorites());
 	}

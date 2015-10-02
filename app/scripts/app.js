@@ -15,7 +15,8 @@ angular
     'ngTouch',
     'LocalStorageModule',
     'angular-sortable-view',
-    'videoModule'
+    'videoModule',
+    'ngMaterial'
 
   ])
   .config(function ($stateProvider, $locationProvider) {

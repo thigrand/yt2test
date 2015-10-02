@@ -1,15 +1,45 @@
 'use strict';
 
-function videoCaster(storage, pagination, localStorageService, $stateParams, videoStorage, favorite) {
+function videoCaster($mdDialog, pagination, $stateParams, videoStorage, favorite) {
 	var vidcast              = this;
 	vidcast.ytUrl            = ''; //take value from input
-	vidcast.ytUrlIds         = storage.getIdsFromStorage();
+	vidcast.ytUrlIds         = videoStorage.getIdsFromStorage('videos');
 	vidcast.videoObjects     = [];
 	vidcast.currentVideoPage = [];
+	vidcast.showFavorite;
 	
 	vidcast.videoToPlay      = urlForPlayer();
 	vidcast.changeFavorite   = favorite.changeFavorite;//changeFavorite;
 	vidcast.play = play;
+	vidcast.showModal = showModal;
+	var videoObject = "";
+
+
+
+  function showModal(ev, videoObject) {
+
+    $mdDialog.show({
+      controller: DialogController,
+      controllerAs: 'dialog',
+      templateUrl: 'views/modal-template.html',
+      // parent: angular.element(document.body), Jak na moje nie potrzebne
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals: {
+      	videoObject: videoObject
+      }
+    })
+    .then(function(answer) {
+    	console.log("hallo")
+    }, function() {
+      console.log("za hallo w morde walo")
+    });
+  };
+
+	function changeFavorite(object){
+		favorite.changeFavorite(object);
+		// vidcast.currentVideoPage = pagination.getArrayForView(currentPage);
+	}
 
 
 
@@ -57,7 +87,7 @@ function videoCaster(storage, pagination, localStorageService, $stateParams, vid
 }
 angular
 	.module('ytApp')
-	.controller('videoCaster', ['storage', 'pagination', 'localStorageService', '$stateParams', 'videoStorage', 'favorite', videoCaster]);
+	.controller('videoCaster', ['$mdDialog', 'pagination', '$stateParams', 'videoStorage', 'favorite', videoCaster]);
 
 
 

@@ -14,7 +14,9 @@ function displayGallery() {
 			ytUrlIds: '=',
 			videoObject: '=',
 			currentVideoPage: '=',
-			removeAction: '='
+			removeAction: '=',
+			showFavorite: '=',
+			filterFavorites: '='
 		},
 		controller:  'videoCaster as vidcast', 
 		link: function() {

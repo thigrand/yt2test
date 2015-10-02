@@ -1,0 +1,30 @@
+<md-dialog aria-label="Video Modal">
+  <form>
+    <md-toolbar class="dialog-toolbar">
+      <div class="md-toolbar-tools dialog-toolbar">
+        <h2>{{dialog.video.name}}</h2>
+
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="dialog.cancel()">
+          <md-icon md-svg-src="images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <div>
+        {{dialog.video.videoToPlay}}
+        <iframe ng-src="{{dialog.video.playerUrl | trustAsResourceUrl}}" class="center-block" width="640" height="390"></iframe>
+
+      </div>
+    </md-dialog-content>
+
+    <div class="md-actions" layout="row">
+      <md-button class="md-button" ng-click="dialog.cancel()">
+        Zamknij
+      </md-button>
+    </div>
+  </form>
+</md-dialog>
+

@@ -4,9 +4,9 @@
   <div class="row panel" id="inputRow">
       <form ng-submit="main.addVideo()" class="form">
         <input id="link-taker" type="text" name="input" ng-model="main.ytUrl" ng-trim="false" ></input>
-        <input id="submit" type="submit" value="Add" ></input>
+        <md-button id="submit" type="submit" value="Add" >Dodaj</md-button>
       </form>
-      <button class="addfavorite right" ng-model="filter.switcher">Ulubione</button>
+      <md-button class="addfavorite right"  ng-click="main.filterFavorites();">Ulubione</md-button>
   </div>
   <!-- <button ng-click="cleare()">clear</button> -->
 
@@ -15,7 +15,10 @@
         yt-url-ids="main.ytUrlIds"
         yt-url="main.ytUrl"
         current-video-page="main.currentVideoPage"
-        remove-action= "main.removeAction">
+        remove-action= "main.removeAction"
+        show-favorite= "main.showFavorite"
+        filter-favorites="main.filterFavorites"
+        >
   </div>
   
   <div class="row" id="pagination">
