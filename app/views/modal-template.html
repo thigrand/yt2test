@@ -16,14 +16,17 @@
       <div>
         {{dialog.video.videoToPlay}}
         <iframe ng-src="{{dialog.video.playerUrl | trustAsResourceUrl}}" class="center-block" width="640" height="390"></iframe>
-
       </div>
     </md-dialog-content>
 
     <div class="md-actions" layout="row">
+      <md-button class="favorite" ng-click="dialog.changeFavorite(dialog.video);" ng-if="dialog.video.favorite">Usuń z ulubionych</md-button>
+      <md-button class="favorite" ng-click="dialog.changeFavorite(dialog.video);" ng-if="!dialog.video.favorite">Dodaj do ulubionych</md-button>
+      <span flex></span>
       <md-button class="md-button" ng-click="dialog.cancel()">
         Zamknij
       </md-button>
+
     </div>
   </form>
 </md-dialog>

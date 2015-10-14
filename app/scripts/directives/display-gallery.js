@@ -4,10 +4,7 @@ function displayGallery() {
 	return {
 		templateUrl: 'views/gallery.html',
 		scope: {
-			// ytUrl: '=',
-			// ytUrlIds: '=',
-			// videoObject: '=',
-			// currentVideoPage: '='
+
 		},
 		bindToController: {
 			ytUrl: '=',
@@ -16,7 +13,8 @@ function displayGallery() {
 			currentVideoPage: '=',
 			removeAction: '=',
 			showFavorite: '=',
-			filterFavorites: '='
+			filterFavorites: '=',
+			boxPerPage: '='
 		},
 		controller:  'videoCaster as vidcast', 
 		link: function() {

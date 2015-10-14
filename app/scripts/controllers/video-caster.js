@@ -10,9 +10,12 @@ function videoCaster($mdDialog, pagination, $stateParams, videoStorage, favorite
 	
 	vidcast.videoToPlay      = urlForPlayer();
 	vidcast.changeFavorite   = favorite.changeFavorite;//changeFavorite;
-	vidcast.play = play;
-	vidcast.showModal = showModal;
-	var videoObject = "";
+	vidcast.play             = play;
+	vidcast.showModal        = showModal;
+	vidcast.boxAmount        = [4, 12, 24];
+	vidcast.boxPerPage       = 12;
+	var videoObject          = "";
+	vidcast.loadFilteredPage = loadFilteredPage;
 
 
 
@@ -36,31 +39,30 @@ function videoCaster($mdDialog, pagination, $stateParams, videoStorage, favorite
     });
   };
 
-	function changeFavorite(object){
-		favorite.changeFavorite(object);
-		// vidcast.currentVideoPage = pagination.getArrayForView(currentPage);
+	function loadFilteredPage(boxPerPage) {
+		vidcast.currentVideoPage = pagination.getArrayForView(currentPage, boxPerPage);
 	}
 
 
 
 	var currentPage  = 0;
 	var videosAmount = vidcast.ytUrlIds.length;
-	var boxPerPage   = 10;
-	var pagesAmount  = window.Math.floor(videosAmount / boxPerPage) + 1;
+	var pagesAmount  = window.Math.floor(videosAmount / vidcast.boxPerPage) + 1;
 	vidcast.incrementPage = incrementPage;
 	vidcast.decrementPage = decrementPage;
 
 	function incrementPage() {
 		if (currentPage < pagesAmount) {
 			currentPage++;
-			vidcast.currentVideoPage = pagination.getArrayForView(currentPage);
+			console.log('main.boxPerPage', main.boxPerPage);
+			vidcast.currentVideoPage = pagination.getArrayForView(currentPage, vidcast.boxPerPage);
 		}
 	};
 
 	function decrementPage() {
 		if (currentPage > 0) {
 			currentPage--;
-			vidcast.currentVideoPage = pagination.getArrayForView(currentPage);
+			vidcast.currentVideoPage = pagination.getArrayForView(currentPage, vidcast.boxPerPage);
 		}
 	};
 
@@ -89,7 +91,10 @@ angular
 	.module('ytApp')
 	.controller('videoCaster', ['$mdDialog', 'pagination', '$stateParams', 'videoStorage', 'favorite', videoCaster]);
 
-
+	// function changeFavorite(object){
+	// 	favorite.changeFavorite(object);
+	// 	// vidcast.currentVideoPage = pagination.getArrayForView(currentPage);
+	// }
 
 	// 	vidcast.closeBox = function(boxIndex) {
 	// 	// var keysOfStorage = localStorageService.keys().sort(numbersComparator);

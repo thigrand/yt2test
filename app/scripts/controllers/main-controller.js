@@ -9,12 +9,13 @@ function MainCtrl(dataNozzle, checkAnchor, pagination, videoStorage) {
 	main.ytUrlIds         = videoStorage.getIdsFromStorage('videos') || [];
 	main.videoObjects     = videoStorage.loadArrayFromStorage('videos');
 	main.currentVideoPage = [];
-
+	
 	main.showFavorite     ;
 	main.filterFavorites  = filterFavorites;
-
+	
 	main.addVideo         = addVideo;
 	main.removeAction     = removeAction;
+	main.boxPerPage       = 12;
 
 	// main.filters.favorite = false;
 
@@ -43,7 +44,8 @@ function MainCtrl(dataNozzle, checkAnchor, pagination, videoStorage) {
 		console.log("ids", ids);
 		dataNozzle.getAllData(ids).then(function(result){
 			main.videoObjects     = result;
-			main.currentVideoPage = pagination.getArrayForView(currentPage);
+			main.currentVideoPage = pagination.getArrayForView(currentPage, main.boxPerPage);
+			console.log('main.boxPerPage', main.boxPerPage);
 			console.log('video objects', result);
 			videoStorage.saveArrayToStorage('videos', result);
 			
@@ -58,7 +60,8 @@ function MainCtrl(dataNozzle, checkAnchor, pagination, videoStorage) {
 				videoStorage.addDataToStorage('videos', data);
 				// main.ytUrlIds = videoStorage.getIdsFromStorage('videos');Nie potrzebne?
 				main.videoObjects = videoStorage.loadArrayFromStorage('videos');
-				main.currentVideoPage = pagination.getArrayForView(currentPage);
+				main.currentVideoPage = pagination.getArrayForView(currentPage, main.boxPerPage);
+
 			});
 		} else {
 			alert('Błędny adres linka.');
