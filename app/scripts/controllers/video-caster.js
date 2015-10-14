@@ -3,7 +3,7 @@
 function videoCaster($mdDialog, pagination, $stateParams, videoStorage, favorite) {
 	var vidcast              = this;
 	vidcast.ytUrl            = ''; //take value from input
-	vidcast.ytUrlIds         = videoStorage.getIdsFromStorage('videos');
+	vidcast.ytUrlIds         = videoStorage.getIdsFromStorage('videos') || [];
 	vidcast.videoObjects     = [];
 	vidcast.currentVideoPage = [];
 	vidcast.showFavorite;

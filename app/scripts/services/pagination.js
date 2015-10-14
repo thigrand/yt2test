@@ -2,15 +2,15 @@
 
 function pagination(videoStorage) {
 
-	var objectsArray ;
+	var objectsArray = [];
 
 	function getArrayForView(currentPage, boxPerPage) {
 	console.log("boxPerPage",boxPerPage);
-		objectsArray        = videoStorage.loadArrayFromStorage('videos');
+		objectsArray        = videoStorage.loadArrayFromStorage('videos') || [];
 		var arrayForView    = [],
 		iterateFrom         = currentPage * boxPerPage,
 		iterateTo           = iterateFrom + boxPerPage;
-		arrayForView        = objectsArray.slice(iterateFrom, iterateTo);
+		arrayForView        = objectsArray.slice(iterateFrom, iterateTo) ;
 
 		return arrayForView;
 	};

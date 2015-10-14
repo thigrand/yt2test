@@ -2,7 +2,7 @@
 
 function videoStorage(storage) {
 
-	var dataArray;
+	var dataArray = [];
 
 	function saveArrayToStorage(keyName, array) {
 		storage.setStorage(keyName, array);
@@ -21,6 +21,7 @@ function videoStorage(storage) {
 	}
 
 	function removeElement(array, id) { 
+
 		var newArray = array.filter(function(obj){
 			return (obj.id !== id);
 		})
@@ -30,10 +31,10 @@ function videoStorage(storage) {
 	}
 
 	function getIdsFromStorage(keyName){
-		dataArray = dataArray || loadArrayFromStorage(keyName);
+		dataArray = dataArray || loadArrayFromStorage(keyName) || [];
 		var ids   = dataArray.map(function(element){
 			return element.id;
-		});
+		}) || [];
 
 		return ids;
 	}
