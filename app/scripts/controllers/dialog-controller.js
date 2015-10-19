@@ -6,18 +6,8 @@ function DialogController($mdDialog, videoObject, favorite ) {
 	dialog.changeFavorite   = favorite.changeFavorite;
 
 	dialog.cancel = function() {
-		console.log("cancel?");
 		$mdDialog.cancel();
 	};
-
-
-	// dialog.answer = function(answer) {
-	// 	$mdDialog.hide(answer);
-	// };
-
-	// dialog.hide = function() {
-	// 	$mdDialog.hide();
-	// };
 }
 angular
 	.module('ytApp')

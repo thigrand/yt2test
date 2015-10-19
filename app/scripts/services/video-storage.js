@@ -26,7 +26,6 @@ function videoStorage(storage) {
 			return (obj.id !== id);
 		})
 		saveArrayToStorage('videos', newArray);
-		console.log("newArray", newArray);
 		return newArray;
 	}
 

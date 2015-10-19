@@ -25,7 +25,6 @@ function videoCaster($mdDialog, pagination, $stateParams, videoStorage, favorite
       controller: DialogController,
       controllerAs: 'dialog',
       templateUrl: 'views/modal-template.html',
-      // parent: angular.element(document.body), Jak na moje nie potrzebne
       targetEvent: ev,
       clickOutsideToClose:true,
       locals: {
@@ -33,9 +32,9 @@ function videoCaster($mdDialog, pagination, $stateParams, videoStorage, favorite
       }
     })
     .then(function(answer) {
-    	console.log("hallo")
+
     }, function() {
-      console.log("za hallo w morde walo")
+
     });
   };
 
@@ -54,7 +53,6 @@ function videoCaster($mdDialog, pagination, $stateParams, videoStorage, favorite
 	function incrementPage() {
 		if (currentPage < pagesAmount) {
 			currentPage++;
-			console.log('main.boxPerPage', main.boxPerPage);
 			vidcast.currentVideoPage = pagination.getArrayForView(currentPage, vidcast.boxPerPage);
 		}
 	};
@@ -90,20 +88,3 @@ function videoCaster($mdDialog, pagination, $stateParams, videoStorage, favorite
 angular
 	.module('ytApp')
 	.controller('videoCaster', ['$mdDialog', 'pagination', '$stateParams', 'videoStorage', 'favorite', videoCaster]);
-
-	// function changeFavorite(object){
-	// 	favorite.changeFavorite(object);
-	// 	// vidcast.currentVideoPage = pagination.getArrayForView(currentPage);
-	// }
-
-	// 	vidcast.closeBox = function(boxIndex) {
-	// 	// var keysOfStorage = localStorageService.keys().sort(numbersComparator);
-	// 	// localStorageService.remove(keysOfStorage[boxIndex]);
-	// 	// vidcast.ytUrlIds = storage.getIdsFromStorage();
-	// 	var oldArray = videoStorage.loadArrayFromStorage('idsArray');
-	// 	var newArray = [];
-	// 	// console.log(boxIndex, "oldArray", oldArray);
-	// 	newArray = videoStorage.removeElement(oldArray, boxIndex);
-	// 	// console.log("newArray", newArray)
-	// 	vidcast.ytUrlIds = newArray;
-	// };

@@ -5,7 +5,6 @@ function pagination(videoStorage) {
 	var objectsArray = [];
 
 	function getArrayForView(currentPage, boxPerPage) {
-	console.log("boxPerPage",boxPerPage);
 		objectsArray        = videoStorage.loadArrayFromStorage('videos') || [];
 		var arrayForView    = [],
 		iterateFrom         = currentPage * boxPerPage,

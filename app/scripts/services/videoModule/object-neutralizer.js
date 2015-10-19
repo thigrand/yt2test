@@ -18,6 +18,8 @@ function objectNeutralizer() {
     }
 
     function transformYouTubeObject(videoObject) {
+        if (!videoObject.items[0].id)
+          throw "GetDataError";
         var simpleObject = {
             source: 'youtube',
             favorite: false,

@@ -7,9 +7,6 @@ function validator(vimeoVideo, youtubeVideo) {
 		var video;
 		
 		videos.some(function(temp) {
-				// console.log(id, "id");
-				// console.log(temp, "temp");
-				// console.log(temp.isValid(id))
 			if(temp.isValid(id)) {
 				video = temp;
 				return true;	
@@ -17,7 +14,6 @@ function validator(vimeoVideo, youtubeVideo) {
 		});
 		return video;
 	}
-	
 	return {
 		type: type
 	};

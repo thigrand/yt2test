@@ -4,7 +4,6 @@ function dataNozzle($q, validator) {
 	
 	function getData(videoId) {
 		var type = validator.type(videoId);
-		// console.log("type", type);
 		return type.get(videoId);
 	}
 

@@ -25,7 +25,7 @@ function checkAnchor(videoStorage) {
 			return (videoId) ? videoId : -1;
 		} else {
 			alert("Ten film został już dodany");
-			return -1;
+			//return -1;
 		}
 	};
 	var checkUrl = function(url) {
@@ -50,11 +50,12 @@ function checkAnchor(videoStorage) {
 		return (goodUrl) ? goodUrl : -1;
 	};
 	function isUnique(id) {
+
 		var idsArray = videoStorage.getIdsFromStorage('videos');
 		var answer = idsArray.some(function(element){
 			return element === id;
 		})
-		console.log("is unique", !answer);
+
 		return !answer;
 	}
 
