@@ -6,16 +6,17 @@ function MainCtrl(dataNozzle, checkAnchor, pagination, videoStorage) {
 	var currentPage       = 0;
 	
 	main.ytUrl            = ''; //take value from input
-	main.ytUrlIds         = videoStorage.getIdsFromStorage('videos') || [];
+	main.ytUrlIds         = videoStorage.getIdsFromStorage('videos') ;
 	main.videoObjects     = videoStorage.loadArrayFromStorage('videos');
 	main.currentVideoPage = [];
 	
 	main.showFavorite     ;
-	main.filterFavorites  = filterFavorites;
+	main.filterFavorites = filterFavorites;
 	
-	main.addVideo         = addVideo;
-	main.removeAction     = removeAction;
-	main.boxPerPage       = 12;
+	main.addVideo        = addVideo;
+	main.removeAction    = removeAction;
+	main.boxPerPage      = 12;
+	main.isActive        = false;
 
 
 	if(main.ytUrlIds) {
@@ -24,16 +25,14 @@ function MainCtrl(dataNozzle, checkAnchor, pagination, videoStorage) {
 	}
 
 	function filterFavorites() {
-		if(main.showFavorite === true) {
-			main.showFavorite = false;
-		} else {
-			main.showFavorite = true;
-		}
+		main.isActive     = !main.isActive;
+		main.showFavorite = !main.showFavorite;
 	}
 
 	function removeAction(id) {
 		videoStorage.removeElement(main.videoObjects, id);
 		main.videoObjects = videoStorage.loadArrayFromStorage('videos');
+		main.currentVideoPage = pagination.getArrayForView(currentPage, main.boxPerPage);
 	}
 
 	function getAllData(ids) {
@@ -45,21 +44,47 @@ function MainCtrl(dataNozzle, checkAnchor, pagination, videoStorage) {
 		});
 	}
 
-	function addVideo() {
-		var idFromUrl = checkAnchor.checkUrl(main.ytUrl);
-
-		if (idFromUrl !== -1) {
-			dataNozzle.getData(idFromUrl)
-			.then(function(data) {
-				videoStorage.addDataToStorage('videos', data);
-				main.videoObjects = videoStorage.loadArrayFromStorage('videos');
-				main.currentVideoPage = pagination.getArrayForView(currentPage, main.boxPerPage);
-
-			});
-		} else if(main.ytUrlIds.some(function(e){e !== idFromUrl })  ){
-			alert('Błędny adres linka.');
-		}
+	function isUniqueVideo(id){
+		main.ytUrlIds = videoStorage.getIdsFromStorage('videos');
+		var answer = main.ytUrlIds.some(function(element){
+			return element === id;
+		});
+		return !answer;
 	}
+
+	function addVideo() {
+		var idFromUrl = "";
+		var isUnique = false;
+
+		checkAnchor.checkUrl(main.ytUrl).then(function(result){
+
+			idFromUrl = result.id;
+ 			isUnique = isUniqueVideo(idFromUrl);
+
+			if (idFromUrl !== -1 && isUnique) {
+				dataNozzle.getData(idFromUrl)
+				.then(function(data) {
+					videoStorage.addDataToStorage('videos', data);
+					main.videoObjects = videoStorage.loadArrayFromStorage('videos');
+					main.currentVideoPage = pagination.getArrayForView(currentPage, main.boxPerPage);
+				});
+				} else if(!isUnique){
+					alert("Ten film został już dodany");
+					main.ytUrl = "";
+				} else{
+					alert('Błędny adres linka.');
+				}
+
+			},function(reason) {
+				console.log("nie działa" +  reason);
+		});
+
+	}
+		// var idFromUrl = checkAnchor.checkUrl(main.ytUrl).id;
+		
+
+		
+
 }
 angular
 	.module('ytApp')

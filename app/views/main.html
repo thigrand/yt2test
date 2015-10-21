@@ -3,10 +3,12 @@
 
   <div class="row panel" id="inputRow">
       <form ng-submit="main.addVideo()" class="form">
-        <input id="link-taker" type="text" name="input" ng-model="main.ytUrl" ng-trim="false" ></input>
-        <md-button id="submit" type="submit" value="Add" >Dodaj</md-button>
+        <input id="link-taker" type="text" name="input" ng-model="main.ytUrl" ng-trim="false" placeholder=""></input>
+        <md-button id="submit"  type="submit" value="Add" >Dodaj</md-button>
       </form>
-      <md-button class="addfavorite right"  ng-click="main.filterFavorites();">Ulubione</md-button>
+      <md-button class="addfavorite right "  
+                 ng-class="{'favorite-button': main.isActive}"
+                 ng-click="main.filterFavorites();">Ulubione</md-button>
   </div>
   <!-- <button ng-click="cleare()">clear</button> -->
 

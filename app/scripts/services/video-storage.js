@@ -17,6 +17,7 @@ function videoStorage(storage) {
 		dataArray = loadArrayFromStorage(keyName) || [];
 		dataArray.push(value);
 		saveArrayToStorage(keyName, dataArray);
+
 		return dataArray;
 	}
 
@@ -30,7 +31,7 @@ function videoStorage(storage) {
 	}
 
 	function getIdsFromStorage(keyName){
-		dataArray = dataArray || loadArrayFromStorage(keyName) || [];
+		dataArray = loadArrayFromStorage(keyName) || [];
 		var ids   = dataArray.map(function(element){
 			return element.id;
 		}) || [];

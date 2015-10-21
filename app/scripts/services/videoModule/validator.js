@@ -14,6 +14,8 @@ function validator(vimeoVideo, youtubeVideo) {
 		});
 		return video;
 	}
+
+
 	return {
 		type: type
 	};
